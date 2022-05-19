@@ -16,3 +16,11 @@ main {
 h3 {
   margin-top: 1.3rem;
 }
+
+.hovered-card {
+  transition: opacity .3s ease-in-out;
+}
+
+.hovered-card:hover {
+  opacity: .5;
+}
