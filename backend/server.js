@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import products from './data/products.js';
 import connectDB from './config/db.js';
+import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 
 // Separated routes in a different file
 import productRoutes from './routes/productRoutes.js';
@@ -18,6 +19,14 @@ app.get('/', (req, res) => {
 
 // For every route that goes through express following the api/products URI, redirect to separate routes file
 app.use('/api/products', productRoutes);
+
+// Middleware to handle errors
+
+// 404
+app.use(notFound);
+
+// 500
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 
