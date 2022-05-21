@@ -1,6 +1,5 @@
 const products = [
   {
-    _id: '1',
     name: 'The Legend of Zelda: Breath Of The Wild',
     image: '/images/zelda.jpg',
     description:
@@ -13,7 +12,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: '2',
     name: 'Grand Theft Auto The Trilogy: Definitive Edition',
     image: '/images/gta.jpg',
     description:
@@ -26,7 +24,6 @@ const products = [
     numReviews: 8,
   },
   {
-    _id: '3',
     name: 'Battlefield 2042',
     image: '/images/battlefield.jpg',
     description:
@@ -39,7 +36,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: '4',
     name: 'Marvel\'s Guardians Of The Galaxy',
     image: '/images/guardians.jpg',
     description:
@@ -52,7 +48,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: '5',
     name: 'Far Cry 6: Ultimate Edition',
     image: '/images/farcry.jpg',
     description:
@@ -65,7 +60,6 @@ const products = [
     numReviews: 10,
   },
   {
-    _id: '6',
     name: 'Sea Of Thieves: A Pirate\'s Life',
     image: '/images/sot.jpg',
     description:

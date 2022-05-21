@@ -1,4 +1,4 @@
-import * as sluggy from 'mongoose-slug-plugin';
+//import * as sluggy from 'mongoose-slug-plugin';
 import mongoose from 'mongoose';
 
 const reviewSchema = mongoose.Schema({
@@ -25,6 +25,10 @@ const productSchema = mongoose.Schema({
     ref: 'User'
   },
   name: {
+    type: String,
+    required: true
+  },
+  slug: {
     type: String,
     required: true
   },
@@ -72,7 +76,7 @@ const productSchema = mongoose.Schema({
   timestamps: true
 });
 
-productSchema.plugin(sluggy, { tmpl: '<%name%>' })
-const Product = mongoose.Model('Product', productSchema);
+//productSchema.plugin(sluggy, { tmpl: '<%name%>' })
+const Product = mongoose.model('Product', productSchema);
 
 export default Product;
