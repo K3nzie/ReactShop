@@ -3,9 +3,6 @@ import { Link, useParams } from 'react-router-dom';
 import { Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap';
 import Rating from '../components/Rating';
 import axios from 'axios';
-//import products from '../products';
-
-//import Product from '../components/Product';
 
 const Product = () => {
   const params = useParams();
@@ -14,7 +11,7 @@ const Product = () => {
 
   useEffect(() => {
     const fetchProduct = async () => {
-      const { data } = await axios.get(`/api/products/${params.id}`);
+      const { data } = await axios.get(`/api/products/${params.slug}`);
       setProduct(data);
     };
 
