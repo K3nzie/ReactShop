@@ -6,12 +6,16 @@ import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 
 // Separated routes in a different file
 import productRoutes from './routes/productRoutes.js';
+import userRoutes from './routes/userRoutes.js';
 
 dotenv.config();
 
 connectDB();
 
 const app = express();
+
+// Accept JSON data in the body of server requests
+app.use(express.json())
 
 app.get('/', (req, res) => {
   res.send('API is running..');
@@ -20,12 +24,12 @@ app.get('/', (req, res) => {
 // For every route that goes through express following the api/products URI, redirect to separate routes file
 app.use('/api/products', productRoutes);
 app.use('/cart/api/products', productRoutes);
+app.use('/api/users', userRoutes);
 
 // Middleware to handle errors
 
 // 404
 app.use(notFound);
-
 // 500
 app.use(errorHandler);
 
