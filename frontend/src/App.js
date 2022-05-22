@@ -11,6 +11,7 @@ import Footer from './components/Footer';
 import Home from './screens/Home';
 import Product from './screens/Product';
 import Cart from './screens/Cart';
+import Login from './screens/Login';
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
             <Container>
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
               <Route path="/product/:slug" element={<Product />} />
               <Route path="/cart/:slug" element={<Cart />} />
               <Route path="/cart/" element={<Cart />} />
