@@ -19,6 +19,7 @@ app.get('/', (req, res) => {
 
 // For every route that goes through express following the api/products URI, redirect to separate routes file
 app.use('/api/products', productRoutes);
+app.use('/cart/api/products', productRoutes);
 
 // Middleware to handle errors
 

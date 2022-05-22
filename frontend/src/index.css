@@ -17,6 +17,11 @@ h3 {
   margin-top: 1.3rem;
 }
 
+h2 {
+  font-size: 1.4rem;
+  padding: .5rem 0;
+}
+
 .hovered-card {
   transition: opacity .3s ease-in-out;
 }
