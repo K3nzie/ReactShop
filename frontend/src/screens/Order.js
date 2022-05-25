@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector, useEffect } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams, useNavigate, useLocation } from 'react-router-dom';
 import { Button, Row, Col, ListGroup, Image, Card  } from 'react-bootstrap';
 import CheckoutSteps from '../components/CheckoutSteps';
 import Message from '../components/Message';
+import { createOrder } from '../actions/orderActions.js';
 
 const Order = () => {
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const cart = useSelector(state => state.cart);
 
   const addDecimals = (num) => {
@@ -20,9 +25,30 @@ const Order = () => {
   cart.taxPrice = addDecimals(Number((0.15 * cart.itemsPrice).toFixed(2)));
   cart.totalPrice = (Number(cart.itemsPrice) + Number(cart.shippingPrice) + Number(cart.taxPrice)).toFixed(2);
 
+  const orderCreate = useSelector(state => state.orderCreate);
+  const { order, success, error } = orderCreate;
+
+  useEffect(() => {
+    if(success) {
+      navigate('/orders/' + order._id);
+
+      // eslint-disable-next-line
+    } else {
+
+    }
+  }, [navigate, success]);
+
 
   const placeOrderHandler = () => {
-    console.log('Order');
+    dispatch(createOrder({
+      orderItems: cart.cartItems,
+      shippingAddress: cart.shippingAddress,
+      paymentMethod: cart.paymentMethod,
+      itemsPrice: cart.itemsPrice,
+      shippingPrice: cart.shippingPrice,
+      taxPrice: cart.taxPrice,
+      totalPrice: cart.totalPrice
+    }));
   }
 
   return (
@@ -105,6 +131,9 @@ const Order = () => {
                 <Col>Total</Col>
                 <Col><strong>${cart.totalPrice}</strong></Col>
               </Row>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              {error && <Message variant="danger">{error}</Message>}
             </ListGroup.Item>
             <ListGroup.Item>
               <Button type="button" className="w-100" disabled={cart.cartItems === 0} onClick={placeOrderHandler}>Place Your Order</Button>

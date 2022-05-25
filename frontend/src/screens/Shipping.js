@@ -6,6 +6,7 @@ import { Link, useParams, useNavigate, useLocation } from 'react-router-dom';
 import countries from '../countries.json';
 import { saveShippingAddress } from '../actions/cartActions.js';
 import CheckoutSteps from '../components/CheckoutSteps';
+import ReactCountryFlag from "react-country-flag";
 
 const Shipping = () => {
   const cart = useSelector(state => state.cart);
@@ -56,7 +57,7 @@ const Shipping = () => {
             <option>Select your country</option>
             { countriesList.map((c, k) => {
               return(
-              <option key={k} value={c.name.toLowerCase()}>{c.name}</option>
+              <option key={k} value={c.name.toLowerCase()}><ReactCountryFlag countryCode={c.iso} /> {c.name}</option>
               )
             }) }
           </Form.Select>

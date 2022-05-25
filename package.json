@@ -32,7 +32,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.3.3",
     "mongoose-slug-generator": "^1.0.4",
-    "mongoose-slug-plugin": "^2.1.0"
+    "mongoose-slug-plugin": "^2.1.0",
+    "react-country-flag": "^3.0.2"
   },
   "devDependencies": {
     "colors": "^1.4.0",
