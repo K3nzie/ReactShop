@@ -5,6 +5,7 @@ import FormContainer from '../components/FormContainer';
 import { Link, useParams, useNavigate, useLocation } from 'react-router-dom';
 import countries from '../countries.json';
 import { saveShippingAddress } from '../actions/cartActions.js';
+import CheckoutSteps from '../components/CheckoutSteps';
 
 const Shipping = () => {
   const cart = useSelector(state => state.cart);
@@ -28,6 +29,7 @@ const Shipping = () => {
 
   return (
     <FormContainer>
+    <CheckoutSteps step1 step2 />
       <h1>Shipping</h1>
       <Form onSubmit={submitHandler} className="my-3">
         <Form.Group controlId='address' className="py-md-2">

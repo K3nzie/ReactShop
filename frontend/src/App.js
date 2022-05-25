@@ -15,6 +15,8 @@ import Login from './screens/Login';
 import Register from './screens/Register';
 import Profile from './screens/Profile';
 import Shipping from './screens/Shipping';
+import Payment from './screens/Payment';
+import Order from './screens/Order';
 
 const App = () => {
   return (
@@ -32,6 +34,8 @@ const App = () => {
               <Route path="/cart/:slug" element={<Cart />} />
               <Route path="/cart/" element={<Cart />} />
               <Route path="/shipping" element={<Shipping />} />
+              <Route path="/payment" element={<Payment />} />
+              <Route path="/placeorder" element={<Order />} />
             </Routes>
               </Container>
           </main>
