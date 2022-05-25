@@ -14,6 +14,7 @@ import Cart from './screens/Cart';
 import Login from './screens/Login';
 import Register from './screens/Register';
 import Profile from './screens/Profile';
+import Shipping from './screens/Shipping';
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
               <Route path="/product/:slug" element={<Product />} />
               <Route path="/cart/:slug" element={<Cart />} />
               <Route path="/cart/" element={<Cart />} />
+              <Route path="/shipping" element={<Shipping />} />
             </Routes>
               </Container>
           </main>

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, Image, ListGroup, Card, Button, Form } from 'react-bootstrap';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
-import { getUserDetails } from '../actions/userActions.js';
+import { getUserDetails, updateUserProfile } from '../actions/userActions.js';
 
 const Profile = () => {
   const [name, setName] = useState('');
@@ -19,6 +19,10 @@ const Profile = () => {
 
   const userLogin = useSelector(state => state.userLogin);
   const { userInfo } = userLogin;
+
+  const userUpdateProfile = useSelector(state => state.userUpdate);
+  const { success } = userUpdateProfile;
+
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -43,6 +47,7 @@ const Profile = () => {
       setMessage('Passwords do not match, please retry');
     } else {
       // Dispatch update user profile
+      dispatch(updateUserProfile({ id: user._id, name, email, password }))
     }
 
   } // submitHandler
@@ -54,6 +59,7 @@ const Profile = () => {
         <h2>User Profile</h2>
         {message && <Message variant='danger'>{message}</Message>}
         {error && <Message variant='danger'>{error}</Message>}
+        {success && <Message variant='success'>Profile updated correctly</Message>}
         {loading && <Loader />}
         <Form onSubmit={submitHandler} className="my-3">
         <Form.Group controlId='name' className="py-md-2">

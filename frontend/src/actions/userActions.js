@@ -9,7 +9,11 @@ import {
   USER_REGISTER_FAIL,
   USER_DETAILS_REQUEST,
   USER_DETAILS_SUCCESS,
-  USER_DETAILS_FAIL
+  USER_DETAILS_FAIL,
+  USER_UPDATE_REQUEST,
+  USER_UPDATE_SUCCESS,
+  USER_UPDATE_FAIL,
+  USER_UPDATE_RESET
 } from '../constants/userConstants.js';
 
 export const login = (email, password) => async (dispatch) => {
@@ -107,6 +111,38 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
   catch(error) {
     dispatch({
       type: USER_DETAILS_FAIL,
+      // Check for the the general error in the response but also check
+      // for the custom error we created in our handler
+      payload: error.response && error.response.data.message ? error.response.data.message : error.message
+    })
+  }
+};
+
+export const updateUserProfile = (user) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: USER_UPDATE_REQUEST
+    });
+
+    const { userLogin: { userInfo } } = getState();
+
+    const config = {
+      headers : {
+        'Content-Type': 'application/json',
+        Authorization:  `Bearer ${userInfo.token}`
+      }
+    };
+
+    const { data } = await axios.put('/api/users/profile', user, config);
+
+    dispatch({
+      type: USER_UPDATE_SUCCESS,
+      payload: data
+    });
+  }
+  catch(error) {
+    dispatch({
+      type: USER_UPDATE_FAIL,
       // Check for the the general error in the response but also check
       // for the custom error we created in our handler
       payload: error.response && error.response.data.message ? error.response.data.message : error.message
