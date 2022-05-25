@@ -17,6 +17,7 @@ import Profile from './screens/Profile';
 import Shipping from './screens/Shipping';
 import Payment from './screens/Payment';
 import Order from './screens/Order';
+import OrderDetails from './screens/OrderDetails';
 
 const App = () => {
   return (
@@ -36,6 +37,7 @@ const App = () => {
               <Route path="/shipping" element={<Shipping />} />
               <Route path="/payment" element={<Payment />} />
               <Route path="/placeorder" element={<Order />} />
+              <Route path="/orders/:id" element={<OrderDetails />} />
             </Routes>
               </Container>
           </main>
